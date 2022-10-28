@@ -1,0 +1,14 @@
+         {         \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}         \begin{tabular}{l*{5}{c}}         \toprule          &\multicolumn{5}{c}{Dep Variable: Shift in Calendar} \\         \cmidrule(lr){2-6}           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)} &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}        &\multicolumn{1}{c}{(5)} \\         
+\midrule
+Agg Ex Ret  &       0.109\sym{*}  &       0.175\sym{*}  &       0.149\sym{*}  &       0.167\sym{*}  &       0.293\sym{***}\\
+            &      (0.06)         &      (0.09)         &      (0.09)         &      (0.09)         &      (0.11)         \\
+FF Ex Ret   &                     &                     &       0.117\sym{***}&                     &                     \\
+            &                     &                     &      (0.03)         &                     &                     \\
+GICS Ex Ret &                     &                     &                     &       0.065\sym{**} &                     \\
+            &                     &                     &                     &      (0.03)         &                     \\
+TNIC Ex Ret &                     &                     &                     &                     &       0.072\sym{**} \\
+            &                     &                     &                     &                     &      (0.03)         \\
+         \cmidrule(lr){1-6}          \multicolumn{1}{l}{Firm FE} & Y&Y&Y&Y&Y \\         \multicolumn{1}{l}{Time FE} & N&Y&Y&Y&Y \\         
+Adjusted $R^2$&        0.11         &        0.31         &        0.31         &        0.31         &        0.31         \\
+$N$         &      39,231         &      38,812         &      38,812         &      38,807         &      33,865         \\
+\bottomrule                         \end{tabular}                         }

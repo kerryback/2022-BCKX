@@ -1,0 +1,14 @@
+         {         \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}         \begin{tabular}{l*{5}{c}}         \toprule          &\multicolumn{5}{c}{Dep Variable: Shift in Expectations} \\         \cmidrule(lr){2-6}           &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)} &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}        &\multicolumn{1}{c}{(5)} \\         
+\midrule
+Agg Ex Ret  &       0.216\sym{***}&       0.294\sym{***}&       0.265\sym{***}&       0.286\sym{***}&       0.423\sym{***}\\
+            &      (0.08)         &      (0.10)         &      (0.10)         &      (0.10)         &      (0.12)         \\
+FF Ex Ret   &                     &                     &       0.131\sym{***}&                     &                     \\
+            &                     &                     &      (0.03)         &                     &                     \\
+GICS Ex Ret &                     &                     &                     &       0.072\sym{**} &                     \\
+            &                     &                     &                     &      (0.03)         &                     \\
+TNIC Ex Ret &                     &                     &                     &                     &       0.104\sym{***}\\
+            &                     &                     &                     &                     &      (0.03)         \\
+         \cmidrule(lr){1-6}          \multicolumn{1}{l}{Firm FE} & Y&Y&Y&Y&Y \\         \multicolumn{1}{l}{Time FE} & N&Y&Y&Y&Y \\         
+Adjusted $R^2$&        0.10         &        0.48         &        0.48         &        0.48         &        0.48         \\
+$N$         &      44,713         &      44,268         &      44,268         &      44,263         &      38,366         \\
+\bottomrule                         \end{tabular}                         }

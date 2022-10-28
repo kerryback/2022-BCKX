@@ -1,0 +1,108 @@
+---
+title:  "Data and Factors"
+author: <br><br><br><br><span style="font-family:perpetua; font-variant:small-caps; color:#606060;">Kerry Back</span><br><br><img src="RiceBusiness-transparent-logo-sm.png"  height=80>
+execute:
+  echo: false
+  jupyter: python3
+format: 
+  revealjs:
+    highlight-style: monokai
+    code-fold: true
+    code-copy: hover
+    scrollable: true
+    slide-number: true
+    preview-links: true
+    self-contained: true
+    controls: true
+    transition: fade
+    theme: [solarized, 721.scss]
+    incremental: true
+---
+
+## Basics
+
+- Price and volume
+- Company financials
+- Analyst forecasts
+- Earnings surprises
+- Dividend announcements
+  
+## Data on positions and trades
+
+- Corporate insiders
+- Short interest
+- Quarterly fund filings
+- Retail order flow (buy and sell)
+
+## Macroeconomic data
+
+- Federal Reserve Economic Data (FRED)
+- Energy Information Administration (EIA)
+- World Bank, ...
+
+## Sentiment data
+
+- Scrape social media or buy/scrape news
+- Extract mentions of tickers
+- Use machine-learning NLP (natural language processing) to classify as positive, negative, or neutral
+
+## Other data
+
+- Images
+  - Satellite and drone imagery
+  - Warehouse truck activity, cars in parking lots, ...
+  - Use machine learning/AI to analyze images
+- Search engine traffic
+- Phone location, ...
+
+## Monthly returns and characteristics
+
+- We'll use monthly data 2000-2021.
+- Monthly returns
+- 100+ stock characteristics known at the beginning of each month from
+  - past prices
+  - company financials
+  - analyst forecasts
+  - earnings announcements
+
+#
+
+- Mimic trading monthly
+  - Form portfolio at beginning of month
+  - Observe returns and changes in characteristics
+  - Form new portfolio, ...
+- Data is on a SQL server at CloudClusters.net
+- [Variable definitions](ghz.pdf)
+
+
+## Factor investing
+
+- Factors are stock characteristics such that
+  - stocks that share characteristics tend to move together
+  - characteristics  predict average returns
+- Value, momentum, profitability, investment rate, volatility, accruals, ...
+
+- [Factor investing at BlackRock](https://www.blackrock.com/us/individual/investment-ideas/what-is-factor-investing){.external target="_blank"}
+- [Factor investing at AQR](https://www.aqr.com/Learning-Center/Systematic-Equities/Systematic-Equities-A-Closer-Look?gclid=Cj0KCQiA_8OPBhDtARIsAKQu0gZS3uj9A0fdCN5eB_P-uUfY0VWr2uY9MW503bgPnO7DbQeVr2_WlxkaAlwhEALw_wcB){.external target="_blank"}
+
+## Overview of machine learning
+
+- What do we want to predict?
+  - Return?
+  - Return minus average return?
+  - Rank of return (1, 2, 3, ...)?
+  - Whether return will be in top, middle, bottom?  Or deciles?
+- What predictors do we want to use?
+- What model do we want to use?
+
+## Some models
+
+- Forests
+  - Random forests
+  - Boosting
+- Neural networks
+- Linear regression and variants
+
+## The Value of machine learning
+
+[Gu, Kelly, and Xiu, 2020](https://www.dropbox.com/s/mmg4del1r0g18li/Gu_Kelly_Xiu_RFS_2020%20Asset%20Pricing%20via%20Machine%20Learning.pdf?dl=1)

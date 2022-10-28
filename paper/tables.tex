@@ -1,0 +1,116 @@
+\newpage \clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Summary statistics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h]
+\caption{\label{tab:summary_stats} Summary Statistics}
+\vspace{10pt}
+\renewcommand{\arraystretch}{1.1}\makebox[\linewidth][c]{
+
+{\small \input{Tables/Summary_stats}
+}
+} \vspace{10pt}
+
+\emph{\footnotesize{}Notes}{\footnotesize{}: This table presents summary statistics for surprise shifts to forecasted earnings dates ($EAS_T^i$) and previous year earnings dates ($EAD_T^i$), excess earnings announcement returns for all firms ($ER^{Agg}_t$) and peer firms. We define peer firms by three industry groupings: Fama-French portfolios, GICS, and TNIC.}{\footnotesize\par}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Summary statistics size matched
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{table}[h]
+\caption{\label{tab:summary_stats_predictable_size_matched} Sized Matched Summary Statistics for Firms with Predictable and Unpredictable Earnings Dates}
+\vspace{10pt}
+\renewcommand{\arraystretch}{0.8}\makebox[\linewidth][c]{
+
+{\small \input{Tables/summary_stats_size_matched}
+}
+} \vspace{10pt}
+
+\emph{\footnotesize{}Notes}{\footnotesize{}: This table presents summary statistics by whether the firm's earnings announcements are predictable. We group firms into above or below median predictability to earnings announcements. We sub-sample to a size-matched sample of firms. The first row for each variable is the group with above median predictability and the second row is for the group with below median predictability. Each observation is 1 firm. }{\footnotesize\par}
+\end{table}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shifts in EA 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\caption{Shifts in EA Dates in Response to Peer Firm EA Excess Returns}
+\label{tab:Shifts_Peer_Returns}
+\begin{subtable}{\linewidth}
+\caption{Shift in Expected EA Date} \label{tab:Shifts_Peer_Returns_a}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table1}}
+\end{subtable}
+
+\vspace{20pt}
+\begin{subtable}{\linewidth}
+\caption{Shift in Calendar EA Date} \label{tab:Shifts_Peer_Returns_b}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table2}}
+\end{subtable}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shifts in EA Full Sample
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\caption{Shifts in EA Dates in Response to Peer Firm EA Excess Returns \\
+Robustness to Including Early-Cycle Firms}
+\label{tab:Shifts_Peer_Returns_Full}
+\begin{subtable}{\linewidth}
+\caption{Shift in Expected EA Date} \label{tab:Shifts_Peer_Returns_a}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table1_Full}}
+\end{subtable}
+
+\vspace{20pt}
+\begin{subtable}{\linewidth}
+\caption{Shift in Calendar EA Date} \label{tab:Shifts_Peer_Returns_b}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table2_Full}}
+\end{subtable}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Delays only 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\label{tab:Shifts_Peer_Returns_Delays}
+\caption{Shifts in EA Dates in Response to Peer Firm EA Excess Returns \\
+Robustness to the Subsample of Firms that Delay}
+\begin{subtable}{\linewidth}
+\caption{Shift in Expected EA Date} \label{tab:Shifts_Peer_Returns_Delays_a}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table3}}
+\end{subtable}
+
+\vspace{20pt}
+\begin{subtable}{\linewidth}
+\caption{Shift in Calendar EA Date} \label{tab:Shifts_Peer_Returns_Delays_b}
+\centering
+\renewcommand{\arraystretch}{0.8}
+\small{\input{Tables/Table4}}
+\end{subtable}
+\end{table}
+
+
+
+
+
+
+
+
