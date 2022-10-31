@@ -1,107 +1,65 @@
-%\documentclass[authoryear,letterpaper,english,12pt]{elsarticle_modified}
-\documentclass[ecta,nameyear,draft]{econsocart}
-\usepackage{comment,color}
-\usepackage{array,tabularx}
-\usepackage{arydshln} % Dashed array and tabular lines
-\usepackage{booktabs,rotating,multirow,framed}
-\usepackage{amsthm,amsmath,amsfonts,amssymb,xcolor,graphicx,babel,natbib,booktabs,chngcntr,comment,array,dcolumn, pdflscape, longtable, pgfplots, rotating,comment}
-\usepackage{colortbl}
-\usepackage{hhline}
-\usepackage{multicol}
-%\usepackage{subcaption}
-\usepackage{ulem}    % TURN ON FOR STRIKE-OUT MARKUP
+\documentclass[authoryear,letterpaper,english,12pt]{elsarticle}
+
+
+\begin{frontmatter}
 
 
 
-\theoremstyle{theorem}
-\newtheorem{proposition}{Proposition}
-\newtheorem{lemma}{Lemma}
-\newtheorem{hypothesis}{Hypothesis}
-\newtheorem*{lemmaC}{Lemma C.1}
-\newtheorem*{corollary}{Corollary}
-\numberwithin{lemma}{section}
-\numberwithin{proposition}{section}
-\numberwithin{equation}{section}
-\numberwithin{figure}{section}
 
-\newcommand{\s}{\sigma_2}
-\newcommand{\m}{\tilde{\mu}^*_2}
-\newcommand{\kap}{z_1(t)}
-\newcommand{\D}{\mathrm{d}}
-
-\newcommand{\E}{\mathrm{e}}
-\newcommand{\mye}{\ensuremath{\mathsf{E}}}
-\newcommand{\R}{\ensuremath{\mathbb{R}}}
-\newcommand{\eqdef}{\;\buildrel \text{def}\over =\;}
-
-\newcommand{\alert}[1]{\textcolor{red}{#1}}
-\newcommand{\proofpart}[1]{\hfill\break\noindent\textit{#1.}\hspace{3ex}}
-
-
-\DeclareMathOperator{\var}{var}
-\DeclareMathOperator{\cov}{cov}
-\DeclareMathOperator{\prob}{prob}
-\DeclareMathOperator{\corr}{corr}
-\DeclareMathOperator{\stdev}{stdev}
-
-%Additional package from CX
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Figure and table packages
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{rotating}
-
+    \title{American Disclosure Options}
+    
+    \begin{aug}
+    
+    \author[id=au1,addressref={add1}]{\fnms{Kerry}~\snm{Back}\ead[label=e1]{kerry.e.back@rice.edu}}
+    \author[id=au2,addressref={add2}]{\fnms{Bruce I.}~\snm{Carlin}\ead[label=e2]{bruce.carlin@rice.edu}}
+    \author[id=au3,addressref={add2}]{\fnms{Seyed Mohammad}~\snm{Kazempour}\ead[label=e3]{smkazempour@rice.edu}}
+    \author[id=au4,addressref={add3}]{\fnms{Chloe L.}~\snm{Xie}\ead[label=e4]{chloexie@mit.edu}}
+    
+    \address[id=add1]{%
+    \orgdiv{Jones Graduate School of Business and School of Social Sciences},
+    \orgname{Rice University}}
+    
+    \address[id=add2]{%
+    \orgdiv{Jones Graduate School of Business},
+    \orgname{Rice University}}
+    
+    \address[id=add3]{%
+    \orgdiv{Sloan School of Management},
+    \orgname{M.I.T.}}
+    
+    \end{aug}
+    
+    
+    \begin{abstract}
+    Abstract goes here.
+    \end{abstract}
+    
+    
+    
+    \end{frontmatter}
+    
 
 
 \begin{document}
 
-\begin{frontmatter}
-
-\title{American Disclosure Options}
-
-\begin{aug}
-
-\author[id=au1,addressref={add1}]{\fnms{Kerry}~\snm{Back}\ead[label=e1]{kerry.e.back@rice.edu}}
-\author[id=au2,addressref={add2}]{\fnms{Bruce I.}~\snm{Carlin}\ead[label=e2]{bruce.carlin@rice.edu}}
-\author[id=au3,addressref={add2}]{\fnms{Seyed Mohammad}~\snm{Kazempour}\ead[label=e3]{smkazempour@rice.edu}}
-\author[id=au4,addressref={add3}]{\fnms{Chloe L.}~\snm{Xie}\ead[label=e4]{chloexie@mit.edu}}
-
-\address[id=add1]{%
-\orgdiv{Jones Graduate School of Business and School of Social Sciences},
-\orgname{Rice University}}
-
-\address[id=add2]{%
-\orgdiv{Jones Graduate School of Business},
-\orgname{Rice University}}
-
-\address[id=add3]{%
-\orgdiv{Sloan School of Management},
-\orgname{M.I.T.}}
-
-\end{aug}
-
-\def\date{\today}
-
-\begin{abstract}
-Abstract goes here.
-\end{abstract}
-
-
-
-\end{frontmatter}
 
 
 \newpage
 
 \section{Introduction}\label{s:intro}
 
+We study firms with correlated values who have private signals and discretion over when to disclose their signals to the market.  We assume firms wish to maximize their intertemporal average stock prices. Each firm's option to disclose is an American exchange option.  Prior to exercise, each firm is priced by risk-averse investors according to the investors' perception of the firm's value.  The assumption that firms care about average prices means that the price is a ``dividend stream'' received by the firm.  If the firm exercises its exchange option (discloses its signal), then it gives up this dividend stream in exchange for a different dividend stream, namely its price as determined by its private signal.  The value of the asset with which the firm is endowed (its pre-disclosure price) varies stochastically depending on the disclosures of other firms, so each firm's optimal time to exercise depends on the disclosure policies of other firms, each of which in equilibrium also depends on the disclosure policies of others.
 
-Introduction goes here.  Start with Uber/Lyft example.
+This is a particular type of option game.  To our knowledge, this game has not previously been studied.  The static game under risk neutrality dates to Grossman, Milgrom, Dye.  Risk aversion in the static game was introduced by Dye and Hughes but only with a single firm.  Dynamic disclosure is studied by ADK but also with only a single firm and with risk neutrality.  So, our multiple firm model is new both because it includes risk aversion and because it is dynamic.
+
+Equilibrium policies are threshold policies with stochastic thresholds, meaning that at each point in time there is a minimum signal value (threshold), depending on prior disclosures or nondisclosures by other firms, such that it is optimal to disclose if and only if one's signal is above the threshold.  Conditional on a disclosure, there is a nonzero probability that the disclosing firm's signal is exactly equal to the threshold, which we call a ``minimum disclosure.''  It turns out that a key issue in the analysis of the game is whether minimum disclosures make other firms more or less likely to disclose.  This is essentially a question of whether minimum disclosures are good or bad news.  Good news causes prices to rise and makes other firms less likely to disclose; bad news causes prices to fall and make other firms more likely to disclose.\footnote{ADK derive this clustering effect of bad news for exogenous news.}  We show that in the case of two firms, a minimum disclosure is bad news and makes the other firm more likely to disclose.  Based on this result, we characterize the equilibrium fully for the case of two firms.  We conjecture that this result about minimum disclosures applies also for more than two firms.  Conditional on the conjecture, we are able to fully characterize the equilibrium for an arbitrary number of firms.
+
 
 
 \section{Model}\label{s:model}
+
+
+
 
 We analyze information disclosure by $n$ firms on a time interval $[0,1]$.  There is a representative investor with constant absolute risk aversion.
 Firms learn their date--1 values $\tilde x_i$ at independent uniformly distributed times $\tilde \theta_i \in [0,1]$.  The values are symmetrically and joint normally distributed with the representative investor's date--1 wealth $\tilde w$, which implies that there are constants $\alpha$ and $\beta$ such that, for each $i$,
