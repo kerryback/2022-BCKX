@@ -1,52 +1,55 @@
 \documentclass[authoryear,letterpaper,english,12pt]{elsarticle}
 
+\usepackage{comment,color}
+\usepackage{array,tabularx}
+\usepackage{arydshln} % Dashed array and tabular lines
+\usepackage{booktabs,rotating,multirow,framed}
+\usepackage{amsthm,
+    amsmath,amsfonts,amssymb,xcolor,graphicx,babel,natbib,booktabs,
+    chngcntr,comment,array,dcolumn, pdflscape, longtable, pgfplots, rotating, subfigure,
+    comment}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{multicol}
+%\usepackage{subcaption}
+\usepackage{ulem}    
+\usepackage{setspace}
 
-\begin{frontmatter}
+\onehalfspacing
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{hypothesis}{Hypothesis}
+
+\numberwithin{lemma}{section}
+\numberwithin{proposition}{section}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\newcommand{\s}{\sigma_2}
+\newcommand{\m}{\tilde{\mu}^*_2}
+\newcommand{\kap}{z_1(t)}
+\newcommand{\D}{\mathrm{d}}
+
+\newcommand{\E}{\mathrm{e}}
+\newcommand{\mye}{\ensuremath{\mathsf{E}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\eqdef}{\;\buildrel \text{def}\over =\;}
+
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+\newcommand{\proofpart}[1]{\hfill\break\noindent\textit{#1.}\hspace{3ex}}
 
 
-
-
-    \title{American Disclosure Options}
-    
-    \begin{aug}
-    
-    \author[id=au1,addressref={add1}]{\fnms{Kerry}~\snm{Back}\ead[label=e1]{kerry.e.back@rice.edu}}
-    \author[id=au2,addressref={add2}]{\fnms{Bruce I.}~\snm{Carlin}\ead[label=e2]{bruce.carlin@rice.edu}}
-    \author[id=au3,addressref={add2}]{\fnms{Seyed Mohammad}~\snm{Kazempour}\ead[label=e3]{smkazempour@rice.edu}}
-    \author[id=au4,addressref={add3}]{\fnms{Chloe L.}~\snm{Xie}\ead[label=e4]{chloexie@mit.edu}}
-    
-    \address[id=add1]{%
-    \orgdiv{Jones Graduate School of Business and School of Social Sciences},
-    \orgname{Rice University}}
-    
-    \address[id=add2]{%
-    \orgdiv{Jones Graduate School of Business},
-    \orgname{Rice University}}
-    
-    \address[id=add3]{%
-    \orgdiv{Sloan School of Management},
-    \orgname{M.I.T.}}
-    
-    \end{aug}
-    
-    
-    \begin{abstract}
-    Abstract goes here.
-    \end{abstract}
-    
-    
-    
-    \end{frontmatter}
-    
-
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\prob}{prob}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\stdev}{stdev}
 
 \begin{document}
 
 
-
-\newpage
-
-\section{Introduction}\label{s:intro}
 
 We study firms with correlated values who have private signals and discretion over when to disclose their signals to the market.  We assume firms wish to maximize their intertemporal average stock prices. Each firm's option to disclose is an American exchange option.  Prior to exercise, each firm is priced by risk-averse investors according to the investors' perception of the firm's value.  The assumption that firms care about average prices means that the price is a ``dividend stream'' received by the firm.  If the firm exercises its exchange option (discloses its signal), then it gives up this dividend stream in exchange for a different dividend stream, namely its price as determined by its private signal.  The value of the asset with which the firm is endowed (its pre-disclosure price) varies stochastically depending on the disclosures of other firms, so each firm's optimal time to exercise depends on the disclosure policies of other firms, each of which in equilibrium also depends on the disclosure policies of others.
 
@@ -231,8 +234,7 @@ Figure~\ref{fig1} illustrates Proposition~\ref{prop:keylemma}.  In the figure, t
 
 \begin{figure}[htp]\caption{The excess of the post-disclosure price over the pre-disclosure boundary is shown as a function of the amount by which the disclosure exceeds the boundary.  The parameter values are $\mu=105$, $\mu^*=100$, and $\sigma=15$, and $\rho=0.5$.  The disclosure occurs at time $t=0.2$.\label{fig1}}
 \begin{center}
-    \includegraphics[scale=0.8]{Figures/DisclosurePostDisclosure.pdf}
-\end{center}
+    \end{center}
 \end{figure}
 
 Figure \ref{fig2} shows that risk premia rise over time prior to disclosures.  The conditional distribution of the asset values is a mixture distribution, mixing over whether a firm already learned its value.  The probability of this event is initially small and rises over time, producing a rising covariance with the SDF.  It follows that announcement returns are higher on average when more time has passed prior to disclosure.
@@ -242,145 +244,3 @@ Figure \ref{fig2} shows that risk premia rise over time prior to disclosures.  T
     \includegraphics[scale=0.8]{Figures/RiskPremia.pdf}
 \end{center}
 \end{figure}
-
-\section{Empirics}
-
-We empirically examine information disclosure by firms in the context of earnings announcements. We test predictions from the model of the option value to delaying disclosure. We find that 75\% of firms irregularly make earnings announcements. We document evidence of strategic delay in information disclosure across industries and within industry. Across industries, we show that for industries where the option to delay is more valuable, earnings announcement dates are more dispersed. Within industry, we document that firms exercise the option value to delay in response to peer earnings announcements. When peer earnings announcement returns are abnormally positive, firms delay their earnings announcement date. Consistent with our model, we find evidence that firms exercise the option value to delay when choosing their earnings announcement dates. 
-
-\subsection{Research Design and Data}\label{ss:researchdesign}
-
-A necessary, but insufficient, requirement for firms to be strategically scheduling their earnings announcements in response to private information is that the market cannot perfectly predict their earnings announcement date. 
-
-\begin{hypothesis}\label{hyp:surprisingdates}
-Firm earnings announcements are not predictable with publicly available information to markets. 
-\end{hypothesis}
-To empirically test this hypothesis, we use data from Wall Street Horizons on firm earnings announcement dates. The data spans from 2007 to 2020 and reports the realized firm earnings announcement dates, which we denote $EA^{i}_{T}$ for firm $i$ and announcement date $T$. We also have data on the market's expectation of the firm's earnings announcement date, which we denote $E_{t}[EA^{i}_{T}]$ for the expectation as of calendar date $t$.  
-
-We construct two measures to capture the unpredictability of earnings announcement dates. First, as a naive benchmark, we use the change from the previous year calendar earnings announcement date ($EAD^{i}_{T}$): 
-\begin{equation}
-    EAD^{i}_{T} =EA^{i}_{T} - EA^{i}_{T-4}
-\end{equation}
-where $EA^{i}_{T}$ is the earnings announcement date for firm $i$ for fiscal quarter $T$. For each firm, we measure the standard deviation in the year-on-year changes in earnings announcement dates ($\sigma_{EAD,i}$). This naive benchmark assumes that the best forecast for the firm's earnings announcement date is the previous year's earnings announcement date. However, some firms tend to follow patterns to their disclosure dates. For example, Boeing Company always announces their earnings on the third or fourth Wednesday of months January, April, July, and October. \cite{noh2021calendar} documents many such patterns to a subset of firms that predictably disclose earnings announcements. 
-
-To best capture all available information to the market about firm earnings announcement dates, we use forecasts by Wall Street Horizons. %description of WSH forecasts% 
-
-We define $EAS^{i}_{T}$ to be the difference between the firm's realized earnings announcement date and the Wall Street Horizons forecast of the earnings announcement date: 
-\begin{equation}
-    EAS^{i}_{T} =EA^{i}_{T} - E_{t}[EA^{i}_{T}].
-\end{equation}
-For each earnings announcement, we use the expected date as of the beginning of the earnings cycle ($t$). This scheduling surprise measure captures unpredictable shifts in the timing of earnings announcements. This measure is economically relevant because managers convey information to analysts about their expected schedule to future earnings announcements. Similarly, for each firm, we measure the standard deviation to earnings announcement date surprise ($\sigma_{EAS,i}$).
-
-Firms tend to schedule their earnings announcements in advance of the announcement date. The median scheduled earnings announcement is scheduled 15 days in advance and is rarely revised. At first blush, scheduling earnings announcements in advance seems at odds with strategic delay. By scheduling in advance of the earnings date, firms give up the option of last minute adjustments to their earnings dates. However, firms may still behave strategically in scheduling earnings dates. For example, \cite{dehaan2015market} shows that firms with poor earnings news tend to schedule announcements when markets are less attentive (such as on Friday afternoon). Scheduling earnings announcements in advance increases the difficulty of strategically timing their earnings announcement compared to that of peer firms. Scheduling is an economic force that biases against us finding evidence of strategic timing of earnings disclosure. 
-
-
-% A formal proposition or comparative statics in the model of this fact would be helpful to confirm whether this is a prediction of the model.
-% Here are a few version of the proposition/comparative static that would be helpful in connecting with the empirics: 
-1. The value of the option to delay increases in the dispersion of firm values ($\sigma_\varepsilon$). 
-2. The dispersion in earnings announcement dates is increasing in the dispersion of firm values ($\sigma_\varepsilon$).  
-3. Conditional on disclosure of the first firm, the expected delay in disclosure by the second firm is increasing in the dispersion of firm values ($\sigma_\varepsilon$).
-
-The extent to which firm disclosure policies are influenced by the disclosures of peer firms depends on the correlation of firm values ($\rho$). We proxy for firm peer groups by industry and use three definitions of industry that are standard to the literature: Fama-French 12 industry portfolios \citep{fama1997industry}, 4-digit GICS grouping, and by TNIC \citep{hoberg2010product,hoberg2016text}.
-
-Our first analysis uses cross-industry variation to identify the relationship between strategic delay and dispersion in firm values. To measure strategic delay, we use the dispersion in earnings announcement dates within an industry and earnings cycle. For industries where firms tend to strategically delay their disclosures, we expect that earnings announcement dates are more dispersed. To measure the dispersion in firm values, we use the dispersion in abnormal earnings announcement returns within an industry. The identifying assumption is that dispersion in firm values is positively associated with more surprising announcement returns. 
-
-We empirically test the hypothesis that industries for which firms have more dispersed earnings news also feature more strategic delay. 
-\begin{hypothesis}\label{hyp:crossindustry}
-Firms within industries that have more dispersed earnings announcement returns also have more dispersed earnings announcement dates. 
-\end{hypothesis}
-
-A positive correlation of cross-industry variation in dispersion of earnings announcement returns and earnings dates is suggestive, but not causal, evidence of strategic delay. To mitigate concerns about contemporaneous relationships with omitted variables, we use one earning cycle lagged dispersion in earnings announcement returns. On average a 1 percent increase in lagged industry dispersion in earnings announcement returns is associated with a 0.62 percent increase in current period dispersion. Despite using lagged dispersion in earnings announcement returns, there are many persistent unobservable industry characteristics that may generate a spurious relationship between dispersion in earnings announcement returns and dates. For example, variation in industry misclassification may cause a spurious relationship. Firms misclassified in an industry are likely to have both different earnings news and a different earnings cycle from the other firms within the industry. Therefore, industries with more misclassified firms may have both more dispersed earnings announcement returns and earnings dates. 
-
-In addition to cross-industry variation, we use within-industry variation to test the core economic mechanism of the model: strategic delay in response to peer disclosures. For our peer disclosure information event, we use earnings announcements of firms within the same industry. The model predicts that firms delay their disclosures when peer firms disclose positive news and move forward their disclosures when peer firms disclose negative news. By using within-industry variation and peer earnings announcement news, we can saturate the hypothesis test with firm and time fixed effects. 
-
-\begin{hypothesis}\label{hyp:withinindustry}
-Conditional on a positive (negative) disclosure by a peer firm, firms delay (move forward) their own disclosures.
-\end{hypothesis}
-
-The relevant timing of these peer firm earnings announcement returns are important to the economic mechanism. Consider the three announcements cases: expected $T_{X}$, early $T_{E}$, and delay $T_{D}$. Figure \ref{fig:Peer_Firm_Timing} illustrates these three cases and the relevant timing of peer firm earnings announcement returns. For the case where the firm announces its earnings when the market expected ($T_{X}$), then the firm chose to announce after the market observed peer earnings announcement returns in the days prior to $T_{X}$. For the case where the firm announces early, there is a different set of relevant peer announcements. The model predicts that the firm chose to announce early due to positive peer firm earnings announcement returns leading up to $T_{E}$. For the case where the firm delays its earnings announcement, the model predicts that the firm made this decision because of positive peer earnings announcement returns prior to its expected announcement date ($T_{E}$). When the firm made the decision to delay, the market has yet to observe the peer earnings announcement returns leading up to $T_{D}$. Therefore, we define the relevant timing of peer firm excess earnings announcement returns as a 3-day window by case:
-
-\begin{equation}
-      \tau=
-    \begin{cases}
-      \{T_{E}-3,T_{E}-2,T_{E}-1\} & \text{if early disclosure}\\
-      \{T_{X}-3,T_{X}-2,T_{X}-1\} & \text{if expected or delayed disclosure}
-    \end{cases}     
-\end{equation}
-
-To measure excess earnings announcement returns for the aggregate market, we use data from CRSP to measure excess returns to the 3-factor Fama-French model for each earnings announcement date of firm $i$:  
-\begin{equation}
-    ER^{Agg}_{t}= \sum_{i, \tau} w_{i} ER^{i}
-\end{equation}
-where the weight $w_i$ is the ratio of firm $i$ market capitalization to the sum of the market capitalization of all announcing firms within the relevant time window $\tau$. Similarly, we estimate peer excess earnings announcement returns by subsampling to the firms within the same industry: 
-\begin{equation}
-    ER^{Ind}_{t}= \sum_{i\in Ind,\tau} w_{i} ER^{i}
-\end{equation}
-where we restrict the sum to all firms within industry $Ind$. 
-
-To focus on firms that respond to peer news, we sub-sample to the firms that report earnings in the latter half of the earnings cycle. We empirically test whether these firms strategically respond to peer firms that announced earlier in the earnings cycle. We estimate by OLS
-\begin{equation} \label{eq:withinindustry}
-    EAS^{i}_{t} = \alpha_{i} +\alpha_{t} + \beta ER^{Agg}_{\tau} + \gamma  ER^{Ind(i)}_{\tau}  + \epsilon_{i,t}
-\end{equation}
-where $\alpha_{i}$ is a firm fixed effect, $\alpha_{t}$ is a time fixed effect for the earnings announcement date, $ER^{Agg}_{\tau}$ and $ER^{Ind(i)}_{\tau}$ are the weighted average of earnings announcement excess returns of all other firms and industry peers for the relevant time window $\tau$. 
-
-If firms strategically delay in response to positive peer news and move forward in response to negative peer news (\ref{hyp:withinindustry}), we expect to find positive $\beta$ (all potential peers) and $\gamma$ (industry-specific peers). 
-
-
-\subsection{Empirical Results}\label{ss:empiricalresults}
-
-In this subsection, we present and discuss the empirical findings in relation to the hypotheses described in \ref{ss:researchdesign}. 
-
-Following the literature, we restrict the sample to firms with a share price greater than \$5 and a market capitalization greater than 50 million. Furthermore, we require that Wall Street Horizons covers the firm in forecasting its earnings announcement date. From the earnings announcement literature, we also require that the firm have a standard fiscal cycle with quarter-ends that match calendar quarter-ends.\footnote{This subsamples firms to those which have regular earnings cycles for fiscal quarter-ends of March 31st, June 30th, September 31st, and December 31st.} We have data on 5,816 firms and 149,059 firm-quarter observations.
-
-At the beginning of an earnings cycle, earnings announcement date forecasts have an average absolute error of 3.1 days and a standard deviation of 4.5 days. Forecast error is the difference between the realized and forecasted earnings announcement date ($EAS^{i}_{T}$). However, forecast errors vary across firms, where the bottom 10th percentile of firms have an average absolute forecast error of 1.5 days, while the top 90th percentile have an average absolute forecast error of 7.1 days. 
-
-The forecast errors by professional forecasters of earnings announcements correlate with realized year-on-year calendar changes in earnings announcement dates. The forecast errors ($EAS^{i}_{T}$) and calendar day changes ($EAD^{i}_{T}$) have a correlation of 77\%. Figure \ref{fig:EA_Shifts} plots the distribution of $EAS^{i}_{T}$ and $EAD^{i}_{T}$. Although the measures are winsorized at the 1\% level, there are outlier forecast errors and calendar changes in excess of 10 days. 
-
-Following \cite{noh2021calendar}, we look for calendar date patterns to earnings announcement dates. On average firms, announce 60\% of their earnings announcements on the same day of the week for each earnings cycle. This firm-level propensity to announce on the same day of the week is significantly higher than by chance. Across all firms, the most popular announcement day of the week is Thursday, on which 33\% of earnings announcements are made. Firms with unpredictable earnings announcement dates are less likely to announce on the same day of the week. Firms in the 90th percentile of absolute earnings date forecast errors ($|EAS^{i}_{T}|$) are 11.4 percentage points less likely to announce on the same day of the week compared to firms in the 10th percentile. 
-
-We find evidence that professional forecasters cannot perfectly predict earnings announcement dates. This unpredictability is supportive evidence of Hypothesis 1 and a necessary condition for firms to be strategically changing earnings announcements in response to private firm-information. Of interest is that the unpredictability of firm earnings announcement dates varies significantly in the cross-section of firms. 
-
-This cross-sectional variation implies that some firms exercise their option to strategically delay disclosure, while other firms do not. We provide suggestive evidence of a trade off between strategic delay in earnings announcements and a firm's information environment. Table \ref{tab:summary_stats_predictable_size_matched} shows that for a size-matched sample of firms, firms with unpredictable earnings dates tend to have significantly lower earnings and revenue response coefficients and worse analyst forecasts (larger earnings and revenue surprise and disagreement among analysts). This evidence suggests that there is a cost to the firm exercising the option value of varying its earnings announcement date. 
-
-For our subsequent analyses, we focus on firms that tend to have unpredictable earnings announcements. We exclude firms for which there tends to be no surprise to the earnings announcement date. For these firms, Wall Street Horizons exactly forecasts the announcement date for more than half of the firm's earnings announcements. Furthermore, we exclude firms that announce on the same day of the week for more than 90 percent of their earnings announcements. We exclude 1,468 firms that predictably announce earnings, which leaves us with a sample of 4,348 firms and 113,861 firm-quarter observations. 
-
-%%%%Industry level analysis
-We find substantial variation in the dispersion to earnings announcement dates by industry and earnings cycle. Figure \ref{fig:Industry_Date_Dispersion} plots this dispersion. Industry is measured at the 6-digit GICs level and dispersion is measured as the standard deviation to earnings cycle calendar dates. The dispersion of earnings dates varies from 5 days at the 10th percentile to 15 days at the 90th percentile. Approximately half of the variation to earnings date dispersion cannot be explained by industry fixed effects and earnings cycle fixed effects.
-
-At the industry-level, we find a strong positive relationship between lagged industry-level dispersion in announcement excess returns and current dispersion in announcement dates. For each decile of dispersion of returns, figure \ref{fig:Industry_Date_Ret} plots the average dispersion in announcement dates. Going from the 1st decile of earnings announcement excess return dispersion to the 10th decile, the dispersion in announcement dates increases by 2 days. This effect is economically large compared to the 9.3 day average industry-cycle dispersion in announcement dates. This evidence is consistent with hypothesis \ref{hyp:crossindustry}. 
-
-%%%%Firm level analysis
-To better identify strategic delay, we use firm-level variation in earnings announcement dates and peer-firm announcement returns. We test hypothesis \ref{hyp:withinindustry} by estimating equation \ref{eq:withinindustry}. Table \ref{tab:Shifts_Peer_Returns} shows that firms delay their earnings announcements in response to aggregate and industry-level earnings announcement returns. We standardized each of the explanatory variables such that one unit is 1 standard deviation.  Table \ref{tab:Shifts_Peer_Returns_a} shows that for a 1 standard deviation increase in aggregate excess earnings announcement returns, firms delay their earnings announcements by 0.3 to 0.59 days. 
-
-Furthermore, firms delay their earnings announcement date in response to positive excess earnings announcement returns for peer firms. This peer-firm effect is robust to all three measures of industry (Fama-French in column 3, GICS in column 4, and TNIC in column 5). Column 3 of table \ref{tab:Shifts_Peer_Returns_a} shows that for a 1 standard deviation increase in Fama-French peer-firm earnings announcement excess returns, firms delay by 0.12 days. These findings are robust to controlling for firm and time fixed effects. Time fixed effects are for the day of actual announcement, not the expected announcement date. Therefore, the aggregate excess earnings announcement return is not absorbed by the time fixed effect. The aggregate excess earnings announcement return is measured over dates $\tau$ which varies by firm in addition to time. 
-
-The results are robust to measuring delay using calendar shifts, rather than market expectations of the earnings announcement date (table \ref{tab:Shifts_Peer_Returns_b}). 
-
-Using firm-level variation, we find effects that are smaller in economic magnitude than that of the industry-level effects. However, the firm-level findings are better identified because we control for potential omitted variables through firm and time fixed effects. However, these fixed-effects may absorb much of the relevant economic variation to the strategic decision of firms to delay earnings announcements. 
-
-% Should we relegate these robustness tables to the appendix? 
-As robustness checks, we consider the following alternatives. First, we expand the sample to include firms that announce in the first half of the earnings cycle. These firms are less likely to be responding to peer earnings announcements because of their position in the earnings cycle. An outcome of the strategic disclosure model is that early announcing firms are more likely to be firms that have learned that they have a high value. The disclosure of these firms are less likely to be influence by peer firm disclosures. Table \ref{Shifts_Peer_Returns_Full} shows that the findings are robust to expanding the sample to include the early announcing firms. The results are qualitatively similar: firms delay in response to positive peer news and move forward in response to negative peer news. The findings are robust, except for the GICS peer grouping where we find a positive, but insignificant coefficient on peer firm returns. 
-
-Second, we evaluate the robustness of our findings to a subsample of firms that delay their earnings announcements. The primary economic mechanism of the model is the strategic delay of earnings announcements. We test whether our primary empirical findings are robust to focusing on variation in how much firms delay their earnings announcements in response to peer firm announcements. Table \ref{tab:Shifts_Peer_Returns_Delays} shows that the findings are robust to the subsample of firms that delay. The results are qualitatively similar. 
-
-
-\newpage{}
-\bibliographystyle{jf}
-\bibliography{disclosure}{}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Figures
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newpage{}
-\input{figures.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tables
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage{}
-\input{tables.tex}
-
-
-\end{document}
-

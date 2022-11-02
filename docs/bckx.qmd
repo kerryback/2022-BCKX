@@ -24,3 +24,14 @@ format:
 
 - Strategic timing of disclosures
 - Risk premia and announcement returns
+
+## Voluntary disclosures
+
+- If known to be informed, equilibrium is to disclose (Grossman/Milgrom)
+- If some possibility of being uninformed, equilibrium is threshold strategy: good types disclose and bad types do not (Dye, 1985)
+- Risk premia (Dye-Hughes, 2018)
+  - stati
+- American option (Acharya-DeMarzo-Kremer, 2011): 
+  - signal correlated with later public signal
+  - provides incentive to keep disclosure option alive
+
