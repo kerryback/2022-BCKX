@@ -1,5 +1,5 @@
 ---
-title:  "American Disclosure Options"
+title:  "Dynamic Disclosure Games"
 author: <br><br>Kerry Back<br>Bruce I. Carlin<br>Seyed Mohammad Kazempour<br>Chloe L. Xie
 institute: <br><br><br>seminar at <br><br>Reichman University<br>November 2022
 execute:
@@ -20,10 +20,112 @@ format:
     incremental: true
 ---
 
-## Overview
+## Model Overview
 
-- Strategic timing of disclosures
-- Risk premia and announcement returns
+- Correlated firms, may or may not be informed
+- Voluntary truthful disclosure
+- Risk-averse investors
+- Dynamic timing game
+
+## Literature
+
+- Static model with single firm
+  - Unraveling argument: Grossman 1981, Milgrom 1981
+  - Plausible deniability: Dye 1985, Jung-Kwon 1988 
+  - Risk aversion: Dye-Hughes 2018
+
+- Dynamic model with single firm
+  - Exogenous announcement $\Rightarrow$ disclosure option: Acharya-DeMarzo-Kremer 2011
+
+## Clustering of announcements
+
+- Acharya-Demarzo-Kremer: "Endogenous Information Flows and the Clustering of Announcements"
+- Can there be clustering following voluntary disclosures?
+  - Voluntary disclosures are always good news for disclosing firms
+  - Are they always good news for positively correlated nondisclosing firms?
+    - Yes for nonstrategic (uninformed) firms
+    - No for strategic (possibly informed) firms
+
+## Lyft and Uber
+
+<br>
+WSJ May 2021: 
+
+<br>
+Lyft’s commentary was so bad, Uber Technologies moved up its earnings release and conference call after watching its own shares trade off sharply in sympathy.
+
+## Risk premia
+
+- Dye & Hughes 2018 show that nondisclosure is variance increasing when investors are risk averse.
+- We show that nondisclosure increases risk premia.
+- Nondisclosure produces right skewness.  Distribution is a mixture of
+    - truncated normal conditional on being informed and not disclosing
+    - normal conditional on not being informed
+
+
+## Scheduling and announcement returns
+```{python}
+import base
+import numpy as np
+```
+
+#
+
+```{python}
+b = base.Bdy.loc[0.2,0.5]
+pre = base.Price.loc[0.2,0.5]
+grid = np.linspace(b, base.mu+base.sig,100)
+post = [base.firm1_price(0.2,0.5,x,0.5) for x in grid]
+
+import plotly.graph_objects as go
+
+trace1 = go.Scatter(
+    x=grid,
+    y=post,
+    mode="lines",
+    hovertemplate="disclosure = $%{x:.2f}<br>post-disclosure price = $%{y:.2f}<extra></extra>",
+    name="Post Disclosure Price"
+)
+
+trace2 = go.Scatter(
+    x=grid,
+    y=pre*np.ones(100),
+    mode="lines",
+    hovertemplate="pre-disclosure price = $%{y:.2f}<extra></extra>",
+    name="Pre Disclosure Price"
+)
+
+trace3 = go.Scatter(
+    x=grid,
+    y=b*np.ones(100),
+    mode="lines",
+    hovertemplate="boundary = $%{y:.2f}<extra></extra>",
+    name="Disclosure Boundary"
+)
+
+fig = go.Figure()
+fig.add_trace(trace1)
+fig.add_trace(trace2)
+fig.add_trace(trace3)
+
+fig.update_layout(
+    template="plotly_dark",
+    xaxis_title="Disclosure",
+    xaxis_title_font_size=24,
+    yaxis_title_font_size=24,
+    font_size=20,
+    yaxis_tickformat=".0f",
+    width=1000,
+    height=420,
+    legend=dict(
+        yanchor="top", 
+        y=0.99, 
+        xanchor="left", 
+        x=0.01
+    )
+)
+fig.show()
+```
 
 ## Voluntary disclosures
 
@@ -34,4 +136,8 @@ format:
 - American option (Acharya-DeMarzo-Kremer, 2011): 
   - signal correlated with later public signal
   - provides incentive to keep disclosure option alive
+
+  ##
+
+  ```{python}
 
