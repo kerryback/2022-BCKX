@@ -271,4 +271,3 @@ numsims = 100000
 sims = initialize(numsims,rhos)
 sims = finish(sims)
 sims.to_csv('Sims.csv')
-
