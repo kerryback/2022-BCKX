@@ -88,7 +88,7 @@ release and conference call after watching its own shares trade off sharply in s
 
 ## Model
 
-- Firms get signals at independent uniformly distributed random times in [0,1].
+- Firms get signals $\tilde x_i$ at independent uniformly distributed random times in [0,1].
 - Signal = value
 - No other randomness
 - Signals are symmetric correlated joint normal
@@ -101,9 +101,9 @@ release and conference call after watching its own shares trade off sharply in s
 - Use risk-neutral pricing
   - $\mu, \sigma, \rho$ are physical parameters
   - $\mu^*, \sigma, \rho$ are risk-neutral parameters
-  - $\mu^* = \mu - $ beta $\times$ risk aversion $\times$ variance
+  - $\mu^* = \mu -$ beta $\times$ risk aversion $\times$ variance
 
-## Firm's objective function
+## Firm's objective 
 
 - Utility = integral of share price over [0,1]
 - Share price is random, depending on other firms' disclosures
@@ -115,56 +115,178 @@ release and conference call after watching its own shares trade off sharply in s
 . . .
 
 :::: {.columns}
-::: {.column width=70}
+::: {.column width="70%"}
 ![](figures/paths.png)
 :::
-::: {.column width=40}
+::: {.column width="30%"}
 
 - Red dots are disclosures
-- For any $t$, disclose at $t$ if
-  - get signal at $t$ and it is high (above bdy)
-  - or had signal before and bdy finally fell to signal
+- Disclose at $t$ if
+  - get signal at $t$ above bdy
+  - get signal before $t$ and bdy at $t=$ signal
 :::
 ::::
 
 ## Some sample paths with two firms
 
 :::: {.columns}
-::: {.column width=70}
+::: {.column width="70%"}
 ![](figures/paths.png)
 :::
-::: {.column width=40}
-- With two firms alive, boundary>price (option must be sufficiently far in the money ...)
-- For last firm, boundary=price
+::: {.column width="30%"}
+- With two firms alive, bdy>price 
+- For last firm, bdy = price
 :::
 ::::
 
 ## Some sample paths with two firms
 
 :::: {.columns}
-::: {.column width=70}
+::: {.column width="70%"}
 ![](figures/paths.png)
 :::
-::: {.column width=40}
+::: {.column width="30%"}
 
-- Price jumps with high disclosure $\Rightarrow$ second disclosure is later
-- Vertical dotted line on left is extreme clustering = possibility of immediate second disclosure
+- High first disclosure $\Rightarrow$ later second disclosure
+- Vertical dotted line on left is extreme clustering
 :::
 ::::
 
 ## Single firm prior to disclosure
 
-. . .
-
-$$\text{price} = E^*[\text{signal} | \text{nondisclosure}]$$
+- Always, $\text{price} = E^*[\text{signal} | \text{nondisclosure}]$
 
 . . .
 
 $$
 \{\text{nondisclosure}\} = \{\text{received signal} < \text{price}\} \\ \cup \{\text{didn't receive signal yet}\}$$
 
+- Standard result (Dye-Hughes): $P_t = \mu^* + \sigma z$ where 
+
+. . .
+
+$$ z = - \frac{t\phi(z)}{1 - t + t\Phi(z)}$$
 
 
+## Last of two firms
+
+:::: {.columns}
+::: {.column width="70%"}
+![](figures/onepath.png)
+:::
+::: {.column width="30%"}
+- Nondisclosure event at $t=0.45$ depends on bdy at $t=0.3$
+- Complicates fixed point condition somewhat
+:::
+::::
+
+## Later: same as one firm
+
+:::: {.columns}
+::: {.column width="70%"}
+![](figures/onepathb.png)
+:::
+::: {.column width="30%"}
+- Nondisclosure event at $t=0.7$ depends on bdy at $t=0.7$
+- Same fixed point condition as for one firm
+:::
+::::
+
+## Equilibrium price as function of boundary
+
+- Always, $\text{price} = E^*[\text{signal} | \text{nondisclosure}]$
+- Nondisclosure event depends on boundary (and prior disclosures)
+- Can in principle solve $\text{price} = f(t, \text{boundary}, \text{prior disclosures})$
+
+## Analysis of option with $>$ 1 firm
+
+- Consider firm at $t$ that knows value $x$
+- Value function is $\quad \max E^* \int_t^1 P_u\,d u$
+- Value function $= J(t, x, \text{prior disclosures})$
+- $d J = J_t \, dt + E^*[\Delta J]$
+- $E^*[\Delta J] = \left\{E^*[J \mid \text{jump}] -J \right\}\times \text{arrival rate} \times dt$
+- HJB equation is $P_t + J_t  + \left\{E^*[J \mid \text{jump}] -J\right\}\times \text{arrival rate} = 0$
 
 
+#
 
+- jumps occur when moving from $i$ firms remaining to $i-1$
+- can take value with $i-1$ remaining as given and solve for value with $i$ remaining
+- HJB equation is linear ODE for $J$
+- value matching is $J(t, x, \cdots) = (1-t)x$ when $x=$ bdy
+- smooth pasting is $J_x(t, x, \cdots) = 1-t$ when $x=$ bdy
+
+## Marginal condition
+
+- HJB, value matching, & smooth pasting $\Leftrightarrow$
+
+. . .
+
+$$ x-P = \left\{E^*[J \mid \text{jump}] - (1-t)x\right\} \\ \times \text{arrival rate}$$
+
+for $x=$ bdy.
+
+- Given $P = f(t, x, \text{prior disclosures})$, can in principle solve for $x$
+
+## Clustering
+
+- Assume two firms and neither has disclosed at $t$
+- Firm 2 has value $x$ at conjectured boundary
+- Which disclosures by firm 1 at $t$ contribute to $E^*[J \mid \text{jump}] - (1-t)x$?
+- Disclosures at the boundary do not.  They cause the boundary to fall rather than rise (Proposition 4.2).
+- $\Rightarrow$ only need to calculate arrival rate of info arrival and disclosure at $t$
+
+## Disclosure at the boundary $\Rightarrow$ boundary falls
+
+![](figures/onepatha.png)
+
+## Risk premia
+
+:::: {.columns}
+::: {.column width="70%"}
+![](figures/paths-riskpremia.png)
+:::
+::: {.column width="30%"}
+- same low and high first disclosures as before
+- bottom row is $E[\tilde x | \cdots] - P$ divided by $P$
+:::
+::::
+
+## Some comparative statics 
+
+:::: {.columns}
+::: {.column width="70%"}
+![](figures/PricesBdys.png)
+:::
+::: {.column width="30%"}
+- Most interesting parameter is correlation
+- Higher correlation $\Rightarrow$ faster fall of price & bdy
+:::
+::::
+
+## Do 1st or 2nd announcers have higher returns?
+:::: {.columns}
+::: {.column width="70%"}
+![](figures/returns_by_correlation.png)
+:::
+::: {.column width="30%"}
+- low correlation $\Rightarrow$ 2nd announcer has higher avg return
+- high correlation $\Rightarrow$ opposite
+:::
+::::
+
+## Earnings announcements
+
+- Expected announcement date from Wall Street Horizons
+- Actual minus expected is increasing in peer and aggregate announcement returns
+  - Returns in 3-day window preceding firm's announcement or expected announcement date
+  - Returns = FF 3-factor excess returns
+- Robust to several definitions of peers (industries) and using past year's date as expected date
+- Stronger for announcements in last half of earnings cycle
+
+## Conclusion
+
+- Delayed announcements $\Rightarrow$ falling prices and higher risk premia
+- Voluntary disclosures are good news but can accelerate other disclosures due to drop in option value
+- Empirics suggest firms do time their announcements based on peer returns (like Uber)
+- Correlation effect on 1st/2nd announcer returns may be worth exploring
