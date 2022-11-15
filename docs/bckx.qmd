@@ -20,12 +20,35 @@ format:
     incremental: true
 ---
 
-## Model Overview
+## Overview
 
-- Correlated firms, may or may not be informed
 - Voluntary truthful disclosure
+- Correlated firms become informed at random times
 - Risk-averse investors
-- Dynamic timing game
+- Main results:
+  - Dynamics of risk premia
+  - Clustering of disclosures
+  - Comparative statics
+  - Some empirics
+
+## Example 
+
+. . .
+
+Wall Street Journal
+(May 4, 2022):
+
+. . .
+
+<br>
+
+Lyft's commentary was so bad, Uber Technologies moved up its earnings
+release and conference call after watching its own shares trade off sharply in sympathy.
+
+<br>
+
+- Apparently, Uber cares about its short-term share price
+- Might have delayed its earnings announcement had Lyft reported exceptionally good results
 
 ## Literature
 
@@ -35,109 +58,113 @@ format:
   - Risk aversion: Dye-Hughes 2018
 
 - Dynamic model with single firm
-  - Exogenous announcement $\Rightarrow$ disclosure option: Acharya-DeMarzo-Kremer 2011
+  - Disclosure option: Acharya-DeMarzo-Kremer 2011
 
-## Clustering of announcements
+## Disclosure option
 
-- Acharya-Demarzo-Kremer: "Endogenous Information Flows and the Clustering of Announcements"
-- Can there be clustering following voluntary disclosures?
-  - Voluntary disclosures are always good news for disclosing firms
-  - Are they always good news for positively correlated nondisclosing firms?
-    - Yes for nonstrategic (uninformed) firms
-    - No for strategic (possibly informed) firms
-
-## Lyft and Uber
-
-<br>
-WSJ May 2021: 
-
-<br>
-Lyft’s commentary was so bad, Uber Technologies moved up its earnings release and conference call after watching its own shares trade off sharply in sympathy.
+- Out of the money when price is above true value
+- At the money when price = true value
+- Value to keeping option alive: another firm may disclose a high value, increasing prices of correlated firms
+- Only optimal to exercise when sufficiently far in the money
+- Need to find equilibrium exercise boundary
 
 ## Risk premia
 
-- Dye & Hughes 2018 show that nondisclosure is variance increasing when investors are risk averse.
-- We show that nondisclosure increases risk premia.
-- Nondisclosure produces right skewness.  Distribution is a mixture of
-    - truncated normal conditional on being informed and not disclosing
-    - normal conditional on not being informed
+- Nondisclosure is information and should reduce risk
+- But nondisclosure creates skewness
+- We show that nondisclosure increases risk premia
+  - Risk premia rise before disclosures,
+  - drop upon disclosures, 
+  - and begin rising again.
+- Complements Dye-Hughes who show that nondisclosure is variance increasing
 
+## Clustering of announcements
+  
+- Good news delays disclosures  
+- But any news reduces option values $\rightarrow$ accelerates disclosures
+- Voluntary disclosures are good news for positively correlated nondisclosing firms
+- But the option effect dominates for disclosures that are only moderately good news
+- Complements ADK, who show that negative exogenous announcements accelerate disclosures
 
-## Scheduling and announcement returns
-```{python}
-import base
-import numpy as np
-```
+## Model
+
+- Firms get signals at independent uniformly distributed random times in [0,1].
+- Signal = value
+- No other randomness
+- Signals are symmetric correlated joint normal
+- Risk-free rate = 0
 
 #
 
-```{python}
-b = base.Bdy.loc[0.2,0.5]
-pre = base.Price.loc[0.2,0.5]
-grid = np.linspace(b, base.mu+base.sig,100)
-post = [base.firm1_price(0.2,0.5,x,0.5) for x in grid]
+- Representative investor with CARA utility
+- Signals (values) are joint normal with market wealth
+- Use risk-neutral pricing
+  - $\mu, \sigma, \rho$ are physical parameters
+  - $\mu^*, \sigma, \rho$ are risk-neutral parameters
+  - $\mu^* = \mu - $ beta $\times$ risk aversion $\times$ variance
 
-import plotly.graph_objects as go
+## Firm's objective function
 
-trace1 = go.Scatter(
-    x=grid,
-    y=post,
-    mode="lines",
-    hovertemplate="disclosure = $%{x:.2f}<br>post-disclosure price = $%{y:.2f}<extra></extra>",
-    name="Post Disclosure Price"
-)
+- Utility = integral of share price over [0,1]
+- Share price is random, depending on other firms' disclosures
+- Assume firms maximize risk-neutral expectation (use market's SDF).
 
-trace2 = go.Scatter(
-    x=grid,
-    y=pre*np.ones(100),
-    mode="lines",
-    hovertemplate="pre-disclosure price = $%{y:.2f}<extra></extra>",
-    name="Pre Disclosure Price"
-)
 
-trace3 = go.Scatter(
-    x=grid,
-    y=b*np.ones(100),
-    mode="lines",
-    hovertemplate="boundary = $%{y:.2f}<extra></extra>",
-    name="Disclosure Boundary"
-)
+## Some sample paths with two firms
 
-fig = go.Figure()
-fig.add_trace(trace1)
-fig.add_trace(trace2)
-fig.add_trace(trace3)
+. . .
 
-fig.update_layout(
-    template="plotly_dark",
-    xaxis_title="Disclosure",
-    xaxis_title_font_size=24,
-    yaxis_title_font_size=24,
-    font_size=20,
-    yaxis_tickformat=".0f",
-    width=1000,
-    height=420,
-    legend=dict(
-        yanchor="top", 
-        y=0.99, 
-        xanchor="left", 
-        x=0.01
-    )
-)
-fig.show()
-```
+:::: {.columns}
+::: {.column width=70}
+![](figures/paths.png)
+:::
+::: {.column width=40}
 
-## Voluntary disclosures
+- Red dots are disclosures
+- For any $t$, disclose at $t$ if
+  - get signal at $t$ and it is high (above bdy)
+  - or had signal before and bdy finally fell to signal
+:::
+::::
 
-- If known to be informed, equilibrium is to disclose (Grossman/Milgrom)
-- If some possibility of being uninformed, equilibrium is threshold strategy: good types disclose and bad types do not (Dye, 1985)
-- Risk premia (Dye-Hughes, 2018)
-  - stati
-- American option (Acharya-DeMarzo-Kremer, 2011): 
-  - signal correlated with later public signal
-  - provides incentive to keep disclosure option alive
+## Some sample paths with two firms
 
-  ##
+:::: {.columns}
+::: {.column width=70}
+![](figures/paths.png)
+:::
+::: {.column width=40}
+- With two firms alive, boundary>price (option must be sufficiently far in the money ...)
+- For last firm, boundary=price
+:::
+::::
 
-  ```{python}
+## Some sample paths with two firms
+
+:::: {.columns}
+::: {.column width=70}
+![](figures/paths.png)
+:::
+::: {.column width=40}
+
+- Price jumps with high disclosure $\Rightarrow$ second disclosure is later
+- Vertical dotted line on left is extreme clustering = possibility of immediate second disclosure
+:::
+::::
+
+## Single firm prior to disclosure
+
+. . .
+
+$$\text{price} = E^*[\text{signal} | \text{nondisclosure}]$$
+
+. . .
+
+$$
+\{\text{nondisclosure}\} = \{\text{received signal} < \text{price}\} \\ \cup \{\text{didn't receive signal yet}\}$$
+
+
+
+
+
 
